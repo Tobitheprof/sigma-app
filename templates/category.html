@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!-- Content wrapper -->
+<div class="content-wrapper">
+  <!-- Content -->
+
+  <div class="container-xxl flex-grow-1 container-p-y">
+    <div class="row">
+      <h4>{{title}}</h4>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident eius, laborum velit placeat nobis excepturi inventore aliquid, assumenda explicabo recusandae in cumque harum? Accusamus doloribus, nihil unde amet facere id.</p>
+      <div class="col-md-12 col-lg-12 mb-3">
+        <div class="row">
+          {% for course in courses %}
+          <div class="col-md-6 col-lg-4 mb-3">
+            <div class="card h-100">
+              <img class="card-img-top" src="{{course.featured_image.url}}" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">{{course.title}}</h5>
+                <p class="card-text">
+                  {{course.description | truncatechars:30}}
+                </p>
+                <p class="text-sm"><b>Learning format:</b> {{course.type}}</p>
+                <p class="text-sm"><b>Author:</b> {{course.author}}</p>
+                <a href="{% url 'course_detail' course.slug %}" class="btn btn-outline-primary">Get Started</a>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- / Content -->
+
+  <div class="content-backdrop fade"></div>
+</div>
+{% endblock content %}

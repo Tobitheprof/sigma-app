@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!-- Content wrapper -->
+<div class="content-wrapper">
+<!-- Content -->
+<div class="container-xxl flex-grow-1 container-p-y">
+  <div class="row">
+    {% if messages %}
+      {% for message in messages %}
+      <div class="alert alert-primary" role="alert">{{message}}</div>
+      {% endfor %}
+    {% endif %}
+    <div class="col-lg-12 mb-4 order-0">
+      <div class="card">
+        <div class="d-flex align-items-end row">
+          <div class="col-sm-7">
+            <div class="card-body">
+              <h5 class="card-title text-primary">Welcome Chief</h5>
+              <p class="mb-4">
+                So, what would you like to do today?
+              </p>
+              <!-- <a href="javascript:;" class="btn btn-sm btn-outline-primary">View Badges</a> -->
+            </div>
+          </div>
+          <div class="col-sm-5 text-center text-sm-left">
+            <div class="card-body pb-0 px-0 px-md-4">
+              <img
+                src="{% static 'assets/img/bloom-doctor-woman-waving-hand-in-greeting.png' %}"
+                height="140"
+                alt="View Badge User"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-4 mb-3">
+      <div class="card h-100">
+        <img class="card-img-top" src="{% static 'assets/img/21742836_6491958.jpg' %}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">Talk to Liz</h5>
+          <p class="card-text">
+            Liz is our AI assistant that's powered by Google's Gemini model. Liz is trained in a special way to help you with all of medical needs and also some quick first aid tips. She can also be fun to talk to while you're depressed
+          </p>
+          <a href="javascript:void(0)" class="btn btn-outline-primary">Say Hi to Liz</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-4 mb-3">
+      <div class="card h-100">
+        <img class="card-img-top" src="{% static 'assets/img/4437.jpg' %}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">Health Essentials</h5>
+          <p class="card-text">
+            The "Health Monitoring" page offers a comprehensive approach to prioritize your well-being and manage your health effectively. Our health essentials are packed with alot of helpful content to help take your health game to the next level. She can also help clear up misinformation on health matters
+          </p>
+          <a href="{% url 'health_monitor' %}" class="btn btn-outline-primary">Take me there</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-4 mb-3">
+      <div class="card h-100">
+        <img class="card-img-top" src="{% static 'assets/img/10843441_4573233.jpg' %}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">Health News & Trends</h5>
+          <p class="card-text">
+            Learn about the latest developments in the health sector thanks to our news section. Our news is specially sourced and is fact-checked as well which helps to prevent the spread of misinformation
+          </p>
+          <a href="{% url 'news' %}" class="btn btn-outline-primary">Get Started</a>
+        </div>
+      </div>
+    </div>
+    <h4 class="mt-2">Recommendations</h4>
+    <p>Our recommendations section is a list of specially hand-picked content that's unique for each user based on their preferences. It's the perfect thing to help you get started on Sigma by seeing what we'd recommend.</p>
+    <div class="col-md-6 col-lg-4 mb-3">
+      <div class="card h-100">
+        <img class="card-img-top" src="{% static 'assets/img/food101.jpg' %}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">Food 101</h5>
+          <p class="card-text">
+            Food 101 serves as the very foundation of of understanding the way food works for us. It contains a detailed analysis of what food is, the varioous classes and also how we should consume it based on our everyday life and also how it help keep us in good health
+          </p>
+          <a href="{% url 'food_and_nutrition' %}" class="btn btn-outline-primary">Get Started</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-4 mb-3">
+      <div class="card h-100">
+        <img class="card-img-top" src="{% static 'assets/img/fitness.jpg' %}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">Guts of steel</h5>
+          <p class="card-text">
+
+            "Discover the wisdom of Socrates: 'It is a shame for a man to grow old without seeing the beauty and strength of which his body is capable.' Dive into our physical fitness recommendation to unlock the powerful connection between fitness and health."          </p>
+          <a href="{% url 'physical_fitness' %}" class="btn btn-outline-primary">Get Started</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-4 mb-3">
+      <div class="card h-100">
+        <img class="card-img-top" src="{% static 'assets/img/sexed.jpg' %}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">Sex Ed for dummies</h5>
+          <p class="card-text">
+            Explore a wealth of knowledge on sexual health with Sigma. Our concise and reliable resources cover everything from contraception to consent, empowering you to make informed decisions. 
+          </p>
+          <a href="{% url 'sex_education' %}" class="btn btn-outline-primary">Get Started</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- / Content -->
+{% endblock content %}

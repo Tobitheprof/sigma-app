@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<script>
+  function getNearbyHospitals() {
+      const loadingMessage = document.getElementById('loading-message');
+      loadingMessage.style.display = 'block'; // Show loading message
+
+      if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+              const latitude = position.coords.latitude;
+              const longitude = position.coords.longitude;
+              fetch('{{endpoint}}', {
+                  method: 'POST',
+                  headers: {
+                      'Content-Type': 'application/json',
+                      'X-CSRFToken': '{{ csrf_token }}' // Ensure CSRF protection
+                  },
+                  body: JSON.stringify({ latitude: latitude, longitude: longitude })
+              })
+              .then(response => response.json())
+              .then(data => {
+                  // Process the received data (list of hospitals)
+                  console.log(data);
+                  const hospitalsContainer = document.getElementById('hospitals-container');
+                  hospitalsContainer.innerHTML = ''; // Clear previous results
+                  data.forEach(hospital => {
+                      const cardHtml = `
+                          <div class="col-md-6 col-lg-4 mb-3">
+                              <div class="card h-100">
+                                  <iframe src="https://maps.google.com/maps?q=${hospital.lat},${hospital.lng}&en=es&z=14&amp;output=embed" frameborder="" height="300"></iframe>
+                                  <div class="card-body">
+                                      <h5 class="card-title">${hospital.name}</h5>
+                                      <p class="card-text">${hospital.vicinity}</p>
+                                      <a href="https://www.google.com/maps/dir/${latitude},${longitude}/${hospital.lat},${hospital.lng}" class="btn btn-outline-primary" target="_blank">Get Directions</a>
+                                  </div>
+                              </div>
+                          </div>`;
+                      hospitalsContainer.innerHTML += cardHtml;
+                  });
+                  loadingMessage.style.display = 'none'; // Hide loading message
+              })
+              .catch(error => {
+                  console.error('Error:', error);
+                  loadingMessage.style.display = 'none'; // Hide loading message on error
+              });
+          }, function(error) {
+              console.error('Error getting location:', error);
+              loadingMessage.style.display = 'none'; // Hide loading message on error
+          });
+      } else {
+          alert("Geolocation is not supported by this browser.");
+          loadingMessage.style.display = 'none'; // Hide loading message if geolocation not supported
+      }
+  }
+</script>
+<!-- Content wrapper -->
+<div class="content-wrapper">
+<!-- Content -->
+<div class="container-xxl flex-grow-1 container-p-y">
+  <div class="row">
+    <h4>{{title}}</h4>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident eius, laborum velit placeat nobis excepturi inventore aliquid, assumenda explicabo recusandae in cumque harum? Accusamus doloribus, nihil unde amet facere id.</p>
+    <div>
+      <button class="btn btn-outline-primary" onclick="getNearbyHospitals()">{{button}}</button>
+    </div>
+    <div class="col-md-12 col-lg-12 mb-3 mt-3">
+      <div id="hospitals-container" class="row">
+        
+      </div>
+      <p id="loading-message">Loading...</p> <!-- Loading message -->
+    </div>
+  </div>
+</div>
+<!-- / Content -->
+{% endblock content %}

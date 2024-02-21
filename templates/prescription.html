@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!-- Content wrapper -->
+<div class="content-wrapper">
+<!-- Content -->
+<div class="container-xxl flex-grow-1 container-p-y">
+  <div class="row">
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-primary" role="alert">{{message}}</div>
+        {% endfor %}
+    {% endif %}
+    <h4>Health Goals</h4>
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos maiores recusandae quasi cupiditate minima exercitationem sit quisquam! Sed, pariatur voluptate officia velit provident tempore unde voluptatem amet, optio possimus asperiores.</p>
+    <div class="mb-3">
+      <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#basicModal">
+          Add a new prescription
+      </button>
+    </div>
+    
+    <div class="row">
+      <h5>Prescriptions</h5>
+
+      {% for prescription in prescriptions %}
+      <div class="col-sm-6 col-lg-4 mb-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{prescription.name}}</h5>
+            <p class="card-text">
+              {{prescription.instructions}}
+            </p>
+            <p class="card-text tex-sm"><b>Dosage:</b> <small class="text-muted">{{prescription.dosage}}</small></p>
+            <p class="card-text tex-sm"><b>Frequency:</b> <small class="text-muted">{{prescription.frequency}}</small></p>
+            <p class="card-text tex-sm"><b>Duration:</b> <small class="text-muted">{{prescription.duration}}</small></p>
+            <p class="card-text tex-sm"><b>Medication type:</b> <small class="text-muted">{{prescription.medication_type}}</small></p>
+            <p class="card-text tex-sm"><b class="fw-light">Finished prescription:</b> <small class="fw-bold">{% if prescription.finished_dosage == True %} Finished {% else %} Not Finished {% endif %}</small></p>
+            <a href="{% url 'update-prescription' prescription.id %}" class="btn btn-primary">Mark as completed</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+
+    </div>
+    
+  </div>
+  
+  <form method="POST">
+    {% csrf_token %}
+    <div class="modal fade" id="basicModal" tabindex="-1" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel1">Add a prescription</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col mb-3">
+                  <label for="nameBasic" class="form-label">Name of prescription</label>
+                  <input type="text" id="nameBasic" class="form-control" placeholder="Example: Paracetamol, Tetracycline, etc...." name="name">
+                </div>
+              </div>
+              <div class="row g-2">
+                <div class="col mb-0">
+                  <label for="type" class="form-label">Prescription type</label>
+                  <input type="text" id="type" name="type" placeholder="Example: Pain killer, Laxative ...." class="form-control">
+                </div>
+              </div>
+              <div class="row g-2 mt-1">
+                <div class="col-6">
+                  <label for="dosage" class="form-label">Dosage</label>
+                  <input type="text" name="dosage" class="form-control" id="" placeholder="Example: 3 Pills">
+                </div>
+                <div class="col-6">
+                  <label for="frequency" class="form-label">Frequency</label>
+                  <input type="text" name="frequency" class="form-control" placeholder="Example: Daily, Bi-Weekly, Weekly...">
+                </div>
+              </div>
+              <div class="row mt-1">
+                <div class="col">
+                  <label for="instructions" class="form-label">Instructions</label>
+                  <textarea name="instructions" id="instructions" cols="30" rows="10" class="form-control" placeholder="Example: Take one tablet by mouth every 8 hours with food. Avoid alcohol while taking this medication."></textarea>
+                </div>
+              </div>
+              <div class="row mt-1">
+                <div class="col">
+                  <label for="duration" class="form-label">Duration</label>
+                  <input type="text" name="duration" id="duration" class="form-control" placeholder="Example: One Week, One Month ...">
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                Close
+              </button>
+              <button type="submit" class="btn btn-primary">Add Prescription</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  </form>
+  
+
+</div>
+<!-- / Content -->
+{% endblock content %}
+

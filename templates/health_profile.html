@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!-- Content wrapper -->
+<div class="content-wrapper">
+<!-- Content -->
+
+<div class="container-xxl flex-grow-1 container-p-y">
+  <div class="row">
+    <h4>Health Profile</h4>
+    <p>Welcome to your health profile page! This is your space to manage your health-related information.</p>
+    <div class="col-md-12 col-lg-12 mb-3">
+      <form method="POST">
+        {% csrf_token %}
+        <div class="card mb-4 shadow-sm">
+            <!-- Health Profile -->
+            <hr class="my-0" />
+            <div class="card-body">
+              <form id="formHealthProfile" method="POST" onsubmit="return false">
+                <div class="row">
+                  <div class="mb-3 col-md-6">
+                    <label for="new_allergy" class="form-label">Allergies</label>
+                    <input type="text" name="allergies" id="new_allergy" class="form-control" placeholder="Example: Peanuts, Bees, Heat" value="{{health_profile.allergies}}">
+                  </div>
+                  <div class="mb-3 col-md-6">
+                    <label for="blood_group" class="form-label">Blood Group</label>
+                    <input type="text" name="blood_group" id="blood_group" class="form-control" placeholder="Example: O+, O-, AB-" value="{{ health_profile.blood_group }}">
+                  </div>
+                  <div class="mb-3 col-md-6">
+                    <label for="genotype" class="form-label">Genotype</label>
+                    <input type="text" name="genotype" id="genotype" class="form-control" placeholder="Example: AA, SS, AS" value="{{ health_profile.genotype }}">
+                  </div>
+                  <div class="mb-3 col-md-6">
+                    <label for="medical_conditions" class="form-label">Medical Conditions</label>
+                    <input type="text" name="medical_conditions" id="medical_conditions" class="form-control" placeholder="Example: Diabetes, HIV/AIDS, Haemophilia" value="{{ health_profile.medical_conditions }}">
+                  </div>
+                  <div class="mb-3 col-md-6">
+                    <label for="weight" class="form-label">Weight</label>
+                    <input type="text" name="weight" id="" class="form-control" placeholder="Example: 100kg, 50lbs" value="{{health_profile.weight}}">
+                  </div>
+                  <div class="mb-3 col-md-6">
+                    <label for="height" class="form-label">Height</label>
+                    <input type="text" name="height" id="" class="form-control" placeholder="Example: 2m, 6ft ..." value="{{health_profile.height}}">
+                  </div>
+                  <div class="mb-3 col-md-12">
+                    <label for="medical_history" class="form-label">Medical History</label>
+                    <textarea name="medical_history" id="medical_history" cols="10" placeholder="Medical History" class="form-control">{{ health_profile.medical_history }}</textarea>
+                  </div>
+                </div>
+                <div class="mt-2">
+                  <button type="submit" class="btn btn-primary me-2">Save changes</button>
+                  <button type="reset" class="btn btn-outline-secondary">Cancel</button>
+                </div>
+              </form>
+            </div>
+            <!-- /Health Profile -->
+          </div>
+        </form>
+    </div>
+  </div>
+</div>
+<!-- / Content -->
+{% endblock content %}

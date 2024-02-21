@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!-- Content wrapper -->
+<div class="content-wrapper">
+<!-- Content -->
+<div class="container-xxl flex-grow-1 container-p-y">
+  <div class="row">
+    <h4>{{lecture.serial_number}}. {{lecture.title}}</h4>
+    <p>{{lecture.description}}</p>
+    <div class="mb-3">
+        <button class="btn btn-outline-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasStart" aria-controls="offcanvasStart">
+            Modules in this course
+        </button>
+    </div>
+    {% if lecture.youtube_url %}
+    <div class="col-md-12 col-lg-12 mb-3">
+      <div class="ratio ratio-16x9">
+          <iframe src="{{lecture.youtube_url}}" title="YouTube video" allowfullscreen></iframe>
+      </div>
+    </div>
+    {% endif %}
+
+    {% if lecture.body %}
+      <div class="col-md-12 col-lg-12 mb-3">
+        {{lecture.body|safe}}
+      </div>
+    {% endif %}
+  </div>
+</div>
+<!-- / Content -->
+
+<!-- Offcanvas Start -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasStart" aria-labelledby="offcanvasStartLabel" aria-hidden="true" style="visibility: hidden;">
+  <div class="offcanvas-header">
+    <h4 id="offcanvasStartLabel" class="offcanvas-title">Treating a burn wound</h4>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body flex-grow-0">
+      <ol class="list-group list-group-numbered">
+        {% for a in lectures %}
+          <li class="list-group-item p-3"><a href="?lecture={{a.serial_number}}" style="color: #566a7f;">{{a.title}}</a></li>
+        {% endfor %}
+        </ol>
+  </div>
+</div>
+<!-- Offcanvas End -->
+{% endblock content %}
+
+
+

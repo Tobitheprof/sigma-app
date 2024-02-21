@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!-- Content wrapper -->
+<div class="content-wrapper">
+<!-- Content -->
+<div class="container-xxl flex-grow-1 container-p-y">
+  <div class="row">
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-primary" role="alert">{{message}}</div>
+        {% endfor %}
+    {% endif %}
+    <h4>Health Goals</h4>
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos maiores recusandae quasi cupiditate minima exercitationem sit quisquam! Sed, pariatur voluptate officia velit provident tempore unde voluptatem amet, optio possimus asperiores.</p>
+    <div class="mb-3">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#basicModal">
+            Set a new goal
+        </button>
+    </div>
+    
+    <div class="row">
+        <h5>Achieved Goals</h5>
+        {% for goal in goals %}
+            {% if goal.achieved == True %}
+            <div class="col-md-6 col-lg-4 mb-3">
+                <div class="card h-100">
+                    <div class="card-body">
+                    <h5 class="card-title">{{goal.name}}</h5>
+                    <p class="card-text">
+                        {{goal.body}}
+                    </p>
+                    <p class="text-sm"><b>Status:</b> {% if goal.achieved == True %}Achieved{% endif %} {% if goal.achieved == False %}Not Achieved{% endif %}</p>
+                    <!-- <a href="{% url 'update-goal' goal.id %}" class="btn btn-outline-primary"> -->
+                        <!-- Mark as Achieved -->
+                    <!-- </a> -->
+                    </div>  
+                </div>
+            </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+    
+    <div class="row">
+        <h5>Unachieved Goals</h5>
+        {% if goals %}
+            {% for goal in goals %}
+                {% if not goal.achieved %}
+                <div class="col-md-6 col-lg-4 mb-3">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ goal.name }}</h5>
+                            <p class="card-text">{{ goal.body }}</p>
+                            <p class="text-sm"><b>Status:</b> Not Achieved</p>
+                            <a href="{% url 'update-goal' goal.id %}" class="btn btn-outline-primary">Mark as Achieved</a>
+                        </div>  
+                    </div>
+                </div>
+                {% endif %}
+            {% endfor %}
+            {% if not unachieved_goals_exist %}
+                <p>What can I say, chief? You're a real go-getter. Congrats on achieving all of your goals.</p>
+                <div class="div">
+                    <img src="https://tenor.com/en-GB/view/love-love-and-war-defi-coin-memecoin-gif-3168369236218777858.gif" alt="">
+                </div>
+            {% endif %}
+        {% else %}
+            <p>You haven't set any goals yet. Start something revolutionary today.</p>
+        {% endif %}
+    </div>                
+  </div>
+  
+  <form method="POST">
+    {% csrf_token %}
+    <div class="modal fade" id="basicModal" tabindex="-1" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel1">Set a new goal for your health</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col mb-3">
+                  <label for="nameBasic" class="form-label">Name</label>
+                  <input type="text" id="nameBasic" class="form-control" placeholder="Start hitting the gym" name="name">
+                </div>
+              </div>
+              <div class="row g-2">
+                <div class="col mb-0">
+                  <label for="body" class="form-label">Describe this goal</label>
+                  <textarea name="body" id="" cols="30" rows="10" placeholder="I want to have a six-pack" class="form-control"></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                Close
+              </button>
+              <button type="submit" class="btn btn-primary">Add Goal</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  </form>
+  
+
+</div>
+<!-- / Content -->
+{% endblock content %}
+
