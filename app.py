@@ -197,11 +197,11 @@ with gr.Blocks() as demo:
         fn=bot, inputs=bot_inputs, outputs=[chatbot_component],
     )
 
-    upload_button_component.upload(
-        fn=upload,
-        inputs=[upload_button_component, chatbot_component],
-        outputs=[chatbot_component],
-        queue=False
-    )
+    # upload_button_component.upload(
+    #     fn=upload,
+    #     inputs=[upload_button_component, chatbot_component],
+    #     outputs=[chatbot_component],
+    #     queue=False
+    # )
 
 demo.queue(max_size=99).launch(debug=False, show_error=True, share=True)
