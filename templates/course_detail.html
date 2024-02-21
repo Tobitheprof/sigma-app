@@ -26,6 +26,9 @@
         {{lecture.body|safe}}
       </div>
     {% endif %}
+    <div class="">
+      <a href="?lecture={{a.serial_number}}+1" class="btn btn-outline-primary">Next Lecture</a>
+    </div>
   </div>
 </div>
 <!-- / Content -->
@@ -45,9 +48,7 @@
   </div>
 </div>
 
-<div class="">
-  <a href="?lecture={{a.serial_number}}+1" class="btn btn-outline-primary">Next Lecture</a>
-</div>
+
 
 
 <!-- Offcanvas End -->
