@@ -30,7 +30,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-z!xbu*(s+#ibggt(as4#15h#x6s=_1@=k#wjlk$itas$w7py%5'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -189,17 +189,17 @@ LOGIN_URL = '/auth/login'
 LOGIN_REDIRECT_URL = '/dashboard'
 
 
-# if DEBUG == True:
-#     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+if DEBUG == True:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-# else:
-#     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-#     EMAIL_HOST = 'smtp.gmail.com'
-#     EMAIL_USE_TLS = True
-#     EMAIL_PORT = 587
-#     EMAIL_HOST_USER = env('EMAIL_HOST_USER')
-#     EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
-#     GOOGLE_API_KEY = env('GOOGLE_API_KEY')
+else:
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_HOST = 'smtp.gmail.com'
+    EMAIL_USE_TLS = True
+    EMAIL_PORT = 587
+    EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+    EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
+    GOOGLE_API_KEY = env('GOOGLE_API_KEY')
 
 
 
