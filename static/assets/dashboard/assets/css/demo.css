@@ -24,6 +24,13 @@ span{
   color: #7563df !important;
 }
 
+
+p span{
+  color: #697a8d !important;
+  font-family: "Poppins" !important;
+}
+
+
 /* ! For .layout-navbar-fixed added fix padding top tpo .layout-page */
 /* Detached navbar */
 .layout-navbar-fixed .layout-wrapper:not(.layout-horizontal):not(.layout-without-menu) .layout-page {

@@ -7,7 +7,7 @@
 <div class="container-xxl flex-grow-1 container-p-y">
   <div class="row">
     <h4>{{lecture.serial_number}}. {{lecture.title}}</h4>
-    <p>{{lecture.description}}</p>
+    <p>{{lecture.description | safe}}</p>
     <div class="mb-3">
         <button class="btn btn-outline-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasStart" aria-controls="offcanvasStart">
             Modules in this course
