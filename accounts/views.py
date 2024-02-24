@@ -90,7 +90,7 @@ def register(request):
 
 
             #Create user model and redirect to edit-profile
-            return redirect('dashboard')#Rediects to specified page once condition is met
+            return redirect('health-profile')
         else:
             messages.info(request, "Passwords do not match")
             return redirect("register")
