@@ -60,7 +60,8 @@ def hospitals(request):
     context = {
         'title' : 'Hospitals Near Me',
         'button' : 'Show Nearby Hospitals',
-        'endpoint' : '/get_hospitals'
+        'endpoint' : '/get_hospitals',
+        'description' : 'Quickly locate the nearest medical facilities in your vicinity. Click the button below to get started'
     }
     return render(request, 'medical_facilities.html', context)
 
@@ -105,7 +106,9 @@ def drug_store(request):
     context = {
         'title' : 'Drug Stores',
         'button' : 'Show Nearby Drug Stores',
-        'endpoint' : '/get_stores'
+        'endpoint' : '/get_stores',
+        'description' : 'Quickly locate the nearest drug stores in your vicinity. Click the button below to get started'
+
     }
     return render(request, 'medical_facilities.html', context)
 
@@ -151,7 +154,8 @@ def dentist(request):
     context = {
         'title' : 'Dentists',
         'endpoint' : '/get_dentists',
-        'button' : 'Show Nearby Dentists'
+        'button' : 'Show Nearby Dentists',
+        'description' : 'Quickly locate the nearest dentists in your vicinity. Click the button below to get started'
 
     }
     return render(request, 'medical_facilities.html', context)
@@ -192,7 +196,8 @@ def gym(request):
     context = {
         'title' : 'Gyms',
         'endpoints' : '/get_gyms',
-        'button' : 'Show Nearby Gyms'
+        'button' : 'Show Nearby Gyms',
+        'description' : 'Quickly locate the nearest gyms in your vicinity. Click the button below to get started'
     }
     return render(request, 'medical_facilities.html', context)
 
@@ -233,8 +238,8 @@ def physio(request):
     context = {
         'title' : 'Physiotherapists',
         'endpoint' : '/get_physios',
-        'button' : 'Show Nearby Physiotherapists'
-
+        'button' : 'Show Nearby Physiotherapists',
+        'description' : 'Quickly locate the nearest physiotherapits in your vicinity. Click the button below to get started'
     }
     return render(request, 'medical_facilities.html', context)
 
