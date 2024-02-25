@@ -107,6 +107,14 @@ AUTHENTICATED VIEWS START
 """
 @login_required
 def profile(request):
+    try:
+        user_profile = Profile.objects.get(owner=request.user)
+    except Profile.DoesNotExist:
+        # Handle the case where the profile does not exist
+        user_profile = Profile.objects.create(owner=request.user)
+        user_profile.save()
+
+        
     user_profile = Profile.objects.get(owner=request.user)
     if request.method == "POST":
         nationality = request.POST['nationality']
@@ -130,12 +138,7 @@ def profile(request):
         messages.info(request, "Alright, you've successfully updated your profile. Go ahead to enjoy the Sigma experience 🎉")
         return redirect('dashboard')
 
-    try:
-        user_profile = Profile.objects.get(owner=request.user)
-    except Profile.DoesNotExist:
-        # Handle the case where the profile does not exist
-        user_profile = Profile.objects.create(owner=request.user)
-        user_profile.save()
+    
 
     context = {
         'title' : 'Edit Profile',
