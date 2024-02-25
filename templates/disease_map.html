@@ -1,16 +1,30 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+<style>
+  /* Default styles */
+  iframe {
+      width: 100%; /* Make the iframe fill the container width */
+      height: 700px; /* Set a default height */
+  }
+
+  /* Media query for screens smaller than 768px (typical mobile screens) */
+  @media screen and (max-width: 768px) {
+      iframe {
+          height: 800px; /* Adjust the height for smaller screens */
+      }
+  }
+</style>
 <!-- Content wrapper -->
 <div class="content-wrapper">
 <!-- Content -->
 <div class="container-xxl flex-grow-1 container-p-y">
   <div class="row">
     <h4>{{title}}</h4>
-    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt, autem laudantium placeat perferendis expedita hic numquam doloribus ipsa doloremque! Voluptas totam expedita sed recusandae ratione architecto sint omnis nobis porro.</p>
+    <p>Navigate through our intuitive interface to explore disease outbreaks, epidemics, and endemic regions across the globe. Our heatmap offers a bird's eye view of the distribution of various diseases, empowering you to grasp the magnitude of health challenges faced by different regions.</p>
     <div class="col-md-12 col-lg-12 mb-3">
       <div class="">
-          <iframe src="https://www.healthmap.org/en/" title="YouTube video" allowfullscreen></iframe>
+        <iframe src="https://www.healthmap.org/en/" title="YouTube video" allowfullscreen></iframe>
       </div>
     </div>
   </div>
