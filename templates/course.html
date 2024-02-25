@@ -7,7 +7,7 @@
 <div class="container-xxl flex-grow-1 container-p-y">
   <div class="row">
     <h4>Learn Something New</h4>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident eius, laborum velit placeat nobis excepturi inventore aliquid, assumenda explicabo recusandae in cumque harum? Accusamus doloribus, nihil unde amet facere id.</p>
+    <p>Sigma has a wide range of courses spread out across a handful of categories for you to choose when trying to learn something about the world of health and medicine</p>
     <div class="col-md-12 col-lg-12 mb-3">
       <div class="row">
         <div class="col-md-6 col-lg-4 mb-3">
@@ -16,9 +16,9 @@
             <div class="card-body">
               <h5 class="card-title">Sex Education</h5>
               <p class="card-text">
-                Some quick example text to build on the card title and make up the bulk of the card's content.
+                Gain insights on sexual health and well-being from our sex ed courses that span across fields like reproductive health, anatomy, health relationships and a lot more
               </p>
-              <a href="javascript:void(0)" class="btn btn-outline-primary">Get Started</a>
+              <a href="{% url 'sex_education' %}" class="btn btn-outline-primary">Get Started</a>
             </div>
           </div>
         </div>
@@ -28,9 +28,9 @@
             <div class="card-body">
               <h5 class="card-title">Food and Nutrition</h5>
               <p class="card-text">
-                Some quick example text to build on the card title and make up the bulk of the card's content.
+                Eating is one thing and eating good is another. Making sure you get the right amounts of nutrients from each meal is a very essential part of health. Learn how to do so from our health and nutrition courses
               </p>
-              <a href="javascript:void(0)" class="btn btn-outline-primary">Get Started</a>
+              <a href="{% url 'food_and_nutrition' %}" class="btn btn-outline-primary">Get Started</a>
             </div>
           </div>
         </div>
@@ -40,9 +40,9 @@
             <div class="card-body">
               <h5 class="card-title">Mental Health</h5>
               <p class="card-text">
-                Some quick example text to build on the card title and make up the bulk of the card's content.
+                Your mental health is what makes you "YOU". You shouldn't compromise when it comes to it and the team at Sigma knows this which is why we have courses centered around taking care of your mental health
               </p>
-              <a href="javascript:void(0)" class="btn btn-outline-primary">Get Started</a>
+              <a href="{% url 'mental_health' %}" class="btn btn-outline-primary">Get Started</a>
             </div>
           </div>
         </div>
@@ -52,9 +52,9 @@
             <div class="card-body">
               <h5 class="card-title">Physical Fitness</h5>
               <p class="card-text">
-                Some quick example text to build on the card title and make up the bulk of the card's content.
+                Physical fitness is something we all desire. At some point in time, we've always wanted to be able to take it a step further in our daily routines but couldn't. Sigma teaches you the best path to physical fitness
               </p>
-              <a href="javascript:void(0)" class="btn btn-outline-primary">Get Started</a>
+              <a href="{% url 'physical_fitness' %}" class="btn btn-outline-primary">Get Started</a>
             </div>
           </div>
         </div>
@@ -64,36 +64,34 @@
             <div class="card-body">
               <h5 class="card-title">First Aid</h5>
               <p class="card-text">
-                Some quick example text to build on the card title and make up the bulk of the card's content.
+                First aid saves lives. It can be the determinant between life or death in emergency situations. Learning how to properly administer it can also improve chances of survival. Learn the craft of administering first aid today.
               </p>
-              <a href="javascript:void(0)" class="btn btn-outline-primary">Get Started</a>
+              <a href="{% url 'first_aid' %}" class="btn btn-outline-primary">Get Started</a>
             </div>
           </div>
         </div>
-        <h4>Latest Courses</h4>
-        <div class="row">
-          <div class="col-md-6 col-lg-4 mb-3">
-            <div class="card h-100">
-              <img class="card-img-top" src="{% static 'assets/img/6089376_22665.jpg' %}" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title">First Aid</h5>
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up the bulk of the card's content.
-                </p>
-                <a href="javascript:void(0)" class="btn btn-outline-primary">Get Started</a>
-              </div>
+        <div class="col-md-6 col-lg-4 mb-3">
+          <div class="card h-100">
+            <img class="card-img-top" src="{% static 'assets/img/parenting.jpg' %}" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">Parenting and Child Health</h5>
+              <p class="card-text">
+                Navigate the journey of parenthood with confidence with courses focused on child health and development. From newborn care and breastfeeding basics to positive parenting techniques and adolescent health, these courses provide valuable guidance and support for parents and caregivers at every stage of their child's growth and development.
+              </p>
+              <a href="#" class="btn btn-outline-primary">Get Started</a>
             </div>
           </div>
-          <div class="col-md-6 col-lg-4 mb-3">
-            <div class="card h-100">
-              <img class="card-img-top" src="{% static 'assets/img/6089376_22665.jpg' %}" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title">First Aid</h5>
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up the bulk of the card's content.
-                </p>
-                <a href="javascript:void(0)" class="btn btn-outline-primary">Get Started</a>
-              </div>
+        </div>
+        <div class="col-md-6 col-lg-4 mb-3">
+          <div class="card h-100">
+            <img class="card-img-top" src="{% static 'assets/img/career.jpg' %}" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">Healthcare Careers and Professional Development</h5>
+              <p class="card-text">
+                Explore career pathways in healthcare and advance your professional development with courses designed for aspiring healthcare professionals and current practitioners. From healthcare ethics and patient communication to clinical skills and leadership development, these courses offer valuable resources and opportunities for career growth and advancement in the healthcare industry. 
+              </p>
+              
+              <a href="#" class="btn btn-outline-primary">Get Started</a>
             </div>
           </div>
         </div>
